@@ -5,12 +5,14 @@ ARG UID=1000
 ARG GID=1000
 ARG USERNAME=www-data
 
-RUN cd / \
-    && apk add postgresql-dev imap-dev krb5-dev supervisor nginx shadow $PHPIZE_DEPS && \
-    pecl install redis && \
-    docker-php-ext-configure imap --with-kerberos --with-imap-ssl && \
-    docker-php-ext-install pdo pdo_pgsql pcntl imap && \
-    docker-php-ext-enable imap redis
+#RUN cd / \
+#    && apk add postgresql-dev imap-dev krb5-dev supervisor nginx shadow $PHPIZE_DEPS && \
+#    pecl install redis && \
+#    docker-php-ext-configure imap --with-kerberos --with-imap-ssl && \
+#    docker-php-ext-install pdo pdo_pgsql pcntl imap && \
+#    docker-php-ext-enable imap redis
+
+RUN cd && apk add supervisor nginx shadow $PHPIZE_DEPS
 
 #COPY ./docker/app/prod/apm-agent-php_1.5_all.apk /
 #RUN cd / && apk add --allow-untrusted apm-agent-php_1.5_all.apk && rm apm-agent-php_1.5_all.apk
