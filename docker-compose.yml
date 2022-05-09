@@ -1,11 +1,22 @@
 version: "3.9"
 services:
+#  app:
+#    build:
+#      context: .
+#      dockerfile: ./docker/Dockerfile
+#    ports:
+#      - "4400:80"
+#    env_file:
+#      - .env
+#    volumes:
+#      - .:/app
+
   app:
     build:
       context: .
-      dockerfile: ./docker/Dockerfile
+      dockerfile: ./docker/with_apache/Dockerfile
     ports:
-    - "4400:80"
+      - "4400:80"
     env_file:
       - .env
     volumes:
